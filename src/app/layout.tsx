@@ -1,6 +1,8 @@
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import './globals.css';
 import QueryProvider from '@/providers/query-provider';
+import { Header } from '@/components/layout/header';
+import { Sidebar } from '@/components/layout/sidebar';
 
 export const metadata: Metadata = {
     title: 'DevNexusPlatform | AI Code Review',
@@ -14,9 +16,15 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="uk">
-        <body className="antialiased bg-background text-foreground">
+        <body className="antialiased bg-background text-foreground min-h-screen">
         <QueryProvider>
-            {children}
+            <Header />
+            <div className="flex">
+                <Sidebar />
+                <div className="flex-1">
+                    {children}
+                </div>
+            </div>
         </QueryProvider>
         </body>
         </html>
